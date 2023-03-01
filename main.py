@@ -19,20 +19,6 @@ def create_table():
         # записываем заголовок в файл
 
 def insert_table(**kwargs):
-    # создаем функцию для вставки данных в таблицу
-
-    with open('names.csv', 'r') as file:
-        # открываем файл names.csv в режиме чтения ('r')
-
-        reader = csv.reader(file, delimiter=';')
-        # создаем объект reader для чтения CSV-файла
-        # указываем разделитель ';'
-
-        if list(reader) == []:
-            # если файл пустой, то создаем таблицу
-
-            create_table()
-
         with open('names.csv', 'a', newline='') as csvfile:
             # открываем файл names.csv в режиме добавления ('a')
             # newline='' нужен для того, чтобы не было пустых строк между записями в файле
@@ -51,6 +37,20 @@ def insert_table(**kwargs):
 
 
 def get_chats() -> list:
+    # создаем функцию для вставки данных в таблицу
+
+    with open('names.csv', 'r') as file:
+        # открываем файл names.csv в режиме чтения ('r')
+
+        reader = csv.reader(file, delimiter=';')
+        # создаем объект reader для чтения CSV-файла
+        # указываем разделитель ';'
+
+        if list(reader) == []:
+            # если файл пустой, то создаем таблицу
+
+            create_table()
+            
     # Открываем файл
     with open('names.csv', 'r') as file:
         # Создаем объект reader, используя разделитель ","
